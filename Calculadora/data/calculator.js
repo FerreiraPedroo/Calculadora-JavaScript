@@ -134,15 +134,21 @@ function digit(_value) {
         myCalculator.clearCalculator;
         console.log(myCalculator.clearCalculator());
     } else if (_value == "=" && expression[2] != "") {
-        myCalculator.setOperand1(expression[0]);
+        if (expression[2] == 0) {
+            expression[0] = "0";
+            expression[1] = "";
+            expression[2] = "";
+            select = 0;
+        } else {
 
-        myCalculator.setOperation(expression[1]);
-        myCalculator.setOperand2(expression[2]);
-        expression[0] = `${myCalculator.getResult()}`;
-        select = 0;
-        expression[1] = "";
-        expression[2] = "";
-
+            myCalculator.setOperand1(expression[0]);
+            myCalculator.setOperation(expression[1]);
+            myCalculator.setOperand2(expression[2]);
+            expression[0] = `${myCalculator.getResult()}`;
+            select = 0;
+            expression[1] = "";
+            expression[2] = "";
+        }
     }
 
     //limitando um ponto por operando.
